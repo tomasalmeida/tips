@@ -1,0 +1,39 @@
+# A simple example of ClusterConfig object:
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: talmeida-dev-cluster
+  region: eu-west-1
+  tags:
+    ownerEmail: talmeida@
+    owner: "Tomas Almeida"
+    purpose: dev
+
+nodeGroups:
+  - name: ng-1
+    instanceType: m5.large
+    desiredCapacity: 1
+
+cloudWatch:
+    clusterLogging:
+        # enable specific types of cluster control plane logs
+        enableTypes: ["controllerManager"]
+        # all supported types: "api", "audit", "authenticator", "controllerManager", "scheduler"
+        # supported special values: "*" and "all"
+
+# if you prefer to use a created subnet/vpc and do not create one for your eks
+# vpc:
+#   subnets:
+#     # must provide 'private' and/or 'public' subnets by availibility zone as shown
+#     public:
+#       eu-north-1a:
+#         id: "subnet-xxxxxx1"
+
+
+#       eu-north-1b:
+#         id: "subnet-xxxxxx2"
+
+#       eu-north-1c:
+#         id: "subnet-xxxxxx3"
