@@ -4,9 +4,11 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
+  # change the cluster name to yours
   name: talmeida-dev-cluster
   region: eu-west-1
   tags:
+    #change the owners
     owner_email: 
     owner: "Tomas Almeida"
     purpose: dev
