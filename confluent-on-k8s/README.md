@@ -20,6 +20,10 @@ Amazon EKS (Elastic Kubernetes Service) is the managed kubernetes cluster provid
 Before running it, customize eksctl-basic-cluster.yaml
   
     eksctl create cluster --config-file eksctl-basic-cluster.yaml --verbose 4
+    aws eks create-addon --cluster-name talmeida-dev-cluster --addon-name aws-ebs-csi-driver --service-account-role-arn arn:aws:iam::<XXXX>:role/AmazonEKS_EBS_CSI_DriverRole
+    eksctl get addon --name aws-ebs-csi-driver --cluster talmeida-dev-cluster
+    eksctl update addon --name aws-ebs-csi-driver --version v1.11.4-eksbuild.1 --cluster talmeida-dev-cluster --force
+
 
 #### Set kube config
 
@@ -84,3 +88,6 @@ Before running it, customize kind-basic-cluster.yaml
 
 ### Instructions
 Follow instructions on [Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html)
+
+### Reference:
+* https://docs.confluent.io/operator/current/overview.html

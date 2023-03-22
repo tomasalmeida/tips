@@ -9,14 +9,19 @@ metadata:
   region: eu-west-1
   tags:
     #change the owners
-    owner_email: 
+    owner_email: my@mail.com
     owner: "Tomas Almeida"
     purpose: dev
 
 nodeGroups:
   - name: ng-1
     instanceType: m5.large
-    desiredCapacity: 2
+    desiredCapacity: 3
+    iam:
+      withAddonPolicies:
+        ebs: true
+        fsx: true
+        efs: true
 
 cloudWatch:
     clusterLogging:
@@ -26,16 +31,13 @@ cloudWatch:
         # supported special values: "*" and "all"
 
 # if you prefer to use a created subnet/vpc and do not create one for your eks
-# vpc:
-#   subnets:
-#     # must provide 'private' and/or 'public' subnets by availibility zone as shown
-#     public:
-#       eu-north-1a:
-#         id: "subnet-xxxxxx1"
-
-
-#       eu-north-1b:
-#         id: "subnet-xxxxxx2"
-
-#       eu-north-1c:
-#         id: "subnet-xxxxxx3"
+vpc:
+  subnets:
+    # must provide 'private' and/or 'public' subnets by availibility zone as shown
+    public:
+      eu-west-1a:
+        id: "subnet-xxxx"
+      eu-west-1b:
+        id: "subnet-yyyy"
+      eu-west-1c:
+        id: "subnet-zzzz"
