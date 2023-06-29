@@ -5,12 +5,12 @@ kind: ClusterConfig
 
 metadata:
   # change the cluster name to yours
-  name: talmeida-dev-cluster
+  name: mycluster-dev-cluster
   region: eu-west-1
   tags:
     #change the owners
-    owner_email: my@mail.com
-    owner: "Tomas Almeida"
+    owner_email: owner@mail.com
+    owner: "Owner name"
     purpose: dev
 
 nodeGroups:
@@ -33,7 +33,7 @@ cloudWatch:
 # if you prefer to use a created subnet/vpc and do not create one for your eks
 vpc:
   subnets:
-    # must provide 'private' and/or 'public' subnets by availibility zone as shown
+    # must provide 'private' and/or 'public' subnets by availability zone as shown
     public:
       eu-west-1a:
         id: "subnet-xxxx"
